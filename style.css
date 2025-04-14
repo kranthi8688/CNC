@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('bc1.jpg'); /* Replace with your image file */
+    background-image: url('./images/bc1.jpg'); /* Replace with your image file */
     background-size: cover; /* Ensures the image covers the entire page */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Keeps the image fixed during scrolling */
@@ -215,6 +215,9 @@ footer {
     position: sticky;
     bottom: 0;
     width: 100%;
+}
+#Contact-title {
+    color: white;
 }
 
 /* Responsive Design */
