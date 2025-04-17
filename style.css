@@ -19,6 +19,69 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+/* Mobile View (Max Width: 768px) */
+@media (max-width: 768px) {
+    /* Header */
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 100px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2em; /* Reduce font size */
+    }
+
+    .hero p {
+        font-size: 1.2em; /* Adjust paragraph size */
+    }
+
+    .hero .button {
+        font-size: 1em; /* Adjust button size */
+        padding: 10px 20px;
+    }
+
+    /* Services Section */
+    .service-list {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 15px;
+    }
+
+    /* Contact Form */
+    .contact-form, .contact-info {
+        padding: 15px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form textarea {
+        font-size: 1em; /* Adjust input font size */
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.9em; /* Reduce footer font size */
+    }
+}
 
 .logo {
     display: flex;
@@ -58,16 +121,34 @@ main {
 }
 
 .hero {
-    background-image: url('hero-image.jpg'); /* Replace with your image */
+    background-image: url('./images/hero-image.jpg'); /* Replace with your hero image */
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
     text-align: center;
-    padding: 100px 0;
+    padding: 150px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
     margin: 0 auto;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .hero h1 {
@@ -80,18 +161,30 @@ main {
     margin-bottom: 20px;
 }
 
+
 .button {
     display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(135deg, #007bff, #00d4ff); /* Gradient background */
+    color: white; /* Text color */
+    padding: 12px 24px; /* Adjust padding for better size */
+    font-size: 1.2em; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    text-decoration: none; /* Remove underline */
+    border-radius: 30px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    text-align: center;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #0056b3, #007bff); /* Darker gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.button:active {
+    transform: translateY(1px); /* Slight press effect */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
 
 .services, .capabilities, .gallery, .contact {
@@ -102,7 +195,7 @@ main {
 .services h2, .capabilities h2, .gallery h2, .contact h2 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: whitesmoke;
+    color: rgb(245, 245, 245);
 }
 
 .service-list {
@@ -113,7 +206,7 @@ main {
 }
 
 .service-item {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.767);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -138,7 +231,7 @@ main {
 }
 
 .capability-item {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.868);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -152,6 +245,24 @@ main {
     list-style: disc;
     padding-left: 20px;
 }
+
+.capability h2 {
+    color: white; /* Set text color to white */
+    text-align: center; /* Center the text horizontally */
+    margin: 0 auto; /* Center the element */
+    padding: 1em 0; /* Add spacing around the heading */
+}
+
+.about-us {
+    padding: 3em 0;
+    text-align: center;
+}
+.about-us h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: whitesmoke;
+}
+
 
 .gallery-grid {
     display: grid;
@@ -167,10 +278,55 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Gallery Section */
+.gallery {
+    padding: 2em;
+    text-align: center;
+    background-color: #f9f9f9de; /* Light background for the gallery */
+}
+
+.gallery h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between images */
+    justify-items: center; /* Center images horizontally */
+}
+
+.gallery-grid img {
+    width: 100%; /* Make images responsive */
+    max-width: 300px; /* Limit the maximum width of images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+.gallery-grid img {
+    width: 250px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image fits within the dimensions without distortion */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
 .contact-form, .contact-info {
     max-width: 600px;
     margin: 20px auto;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.884);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -193,7 +349,7 @@ main {
 .contact-form textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccca0;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -207,6 +363,71 @@ main {
     margin-bottom: 10px;
 }
 
+.owner {
+    padding: 2em;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.owner h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #18303f;
+}
+
+.owner-details p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+}
+
+.owner {
+    padding: 2em; /* Reduce padding */
+    text-align: center;
+    background: linear-gradient(135deg, #eceff3, #e5f1f3); /* Gradient background */
+    color: white; /* Text color */
+    border-radius: 8px; /* Reduce corner radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    margin: 1.5em auto; /* Reduce spacing around the section */
+    max-width: 600px; /* Reduce the width */
+}
+
+.owner h2 {
+    font-size: 2em; /* Reduce font size */
+    margin-bottom: 0.8em; /* Reduce spacing below the heading */
+    color: #0d0a0a; /* White text for the heading */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+}
+
+.owner-details {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly lighter semi-transparent background */
+    padding: 1em; /* Reduce padding */
+    border-radius: 6px; /* Reduce corner radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.owner-details p {
+    font-size: 1em; /* Reduce font size */
+    line-height: 1.5; /* Adjust line height */
+    margin-bottom: 0.8em; /* Reduce spacing between paragraphs */
+    color: #070707; /* Light text color */
+    font-weight: bold;
+    
+}
+
+.owner-details strong {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.806) /* Highlighted text color for labels */
+}
+
+.owner-details h3 {
+    font-size: 1.5em; /* Reduce font size */
+    margin-bottom: 0.5em; /* Reduce spacing below the subheading */
+    color: #0b0a08; /* Highlighted heading color */
+    text-shadow: 1px 1px 2px rgba(15, 12, 12, 0.3); /* Subtle text shadow */
+}
+
 footer {
     background-color: #18243f;
     color: white;
@@ -216,9 +437,9 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 #Contact-title {
     color: white;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -245,3 +466,79 @@ footer {
         padding: 0 20px;
     }
 }
+
+.hero {
+    background-image: url('./images/hero-image.jpg'); /* Replace with your hero image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    color: white;
+    text-align: center;
+    padding: 150px 20px; /* Adjust padding for spacing */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay */
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-in-out; /* Add fade-in animation */
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+.hero .button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Stylish gradient */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero .button:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Reverse gradient on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
