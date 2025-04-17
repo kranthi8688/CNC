@@ -121,7 +121,6 @@ main {
 }
 
 .hero {
-    background-image: url('./images/hero-image.jpg'); /* Replace with your hero image */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
